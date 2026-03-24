@@ -87,7 +87,7 @@ const HeroSection = () => {
         <motion.div
           initial={{ opacity: 0, x: 60, scale: 0.95 }}
           animate={{ opacity: 1, x: 0, scale: 1 }}
-          transition={{ duration: 0.9, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.9, delay: 0.5, ease }}
           className="relative hidden lg:block"
         >
           <div className="relative bg-card rounded-3xl shadow-premium-lg border border-border/50 p-7 space-y-5">
