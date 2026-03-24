@@ -3,10 +3,12 @@ import { Shield, Building2, Stethoscope, Activity, Heart, Thermometer, ArrowRigh
 import { motion } from "framer-motion";
 import nexcareIcon from "@/assets/nexcare-icon.png";
 
+const ease = [0.22, 1, 0.36, 1] as [number, number, number, number];
+
 const fadeUp = (delay: number) => ({
   initial: { opacity: 0, y: 30 },
   animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.7, delay, ease: [0.22, 1, 0.36, 1] },
+  transition: { duration: 0.7, delay, ease },
 });
 
 const HeroSection = () => {
