@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
@@ -38,34 +37,35 @@ const HowItWorksSection = () => {
   const ref = useScrollAnimation();
 
   return (
-    <section id="how-it-works" className="py-20 lg:py-28">
-      <div ref={ref} className="section-fade-in max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
-        <div className="text-center space-y-4 max-w-2xl mx-auto">
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-foreground tracking-tight">
+    <section id="how-it-works" className="py-24 lg:py-32">
+      <div ref={ref} className="section-fade-in max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-14">
+        <div className="text-center space-y-5 max-w-2xl mx-auto">
+          <p className="text-xs font-semibold text-primary uppercase tracking-[0.2em]">How It Works</p>
+          <h2 className="text-3xl sm:text-4xl lg:text-[2.75rem] font-extrabold text-foreground tracking-[-0.02em]">
             How <span className="gradient-text">NexCare</span> Works
           </h2>
-          <p className="text-muted-foreground text-lg">Simple steps tailored to every stakeholder.</p>
+          <p className="text-muted-foreground text-lg font-light">Simple steps tailored to every stakeholder.</p>
         </div>
 
         <Tabs defaultValue="patients" className="max-w-3xl mx-auto">
-          <TabsList className="grid grid-cols-3 w-full">
+          <TabsList className="grid grid-cols-3 w-full rounded-full p-1 bg-muted/50">
             {tabs.map((t) => (
-              <TabsTrigger key={t.value} value={t.value}>
+              <TabsTrigger key={t.value} value={t.value} className="rounded-full text-[13px] font-medium data-[state=active]:shadow-sm">
                 {t.label}
               </TabsTrigger>
             ))}
           </TabsList>
 
           {tabs.map((t) => (
-            <TabsContent key={t.value} value={t.value} className="mt-8 space-y-4">
+            <TabsContent key={t.value} value={t.value} className="mt-10 space-y-4">
               {t.steps.map((s) => (
-                <div key={s.step} className="flex gap-4 items-start bg-card rounded-xl border border-border p-5 hover:shadow-md transition-shadow">
-                  <div className="w-10 h-10 rounded-full gradient-primary flex items-center justify-center flex-shrink-0">
+                <div key={s.step} className="flex gap-5 items-start bg-card rounded-2xl border border-border/50 p-6 hover:shadow-premium hover:-translate-y-0.5 transition-all duration-300">
+                  <div className="w-10 h-10 rounded-full gradient-primary flex items-center justify-center flex-shrink-0 shadow-md shadow-primary/15">
                     <span className="text-primary-foreground text-sm font-bold">{s.step}</span>
                   </div>
                   <div>
-                    <h4 className="font-semibold text-foreground">{s.title}</h4>
-                    <p className="text-sm text-muted-foreground mt-1">{s.desc}</p>
+                    <h4 className="font-bold text-foreground tracking-tight">{s.title}</h4>
+                    <p className="text-sm text-muted-foreground mt-1 leading-relaxed">{s.desc}</p>
                   </div>
                 </div>
               ))}
