@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
+import nexcareLogo from "@/assets/nexcare-logo.png";
 
 const navLinks = [
   { label: "Features", href: "#features" },
@@ -27,20 +28,15 @@ const Navbar = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "bg-background/95 backdrop-blur-md shadow-sm border-b border-border"
+          ? "glass-nav shadow-sm border-b border-border/50"
           : "bg-transparent"
       }`}
     >
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16 md:h-20">
-        <button onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-lg gradient-primary flex items-center justify-center">
-            <span className="text-primary-foreground font-bold text-sm">N</span>
-          </div>
-          <span className="text-xl font-bold text-foreground">
-            Nex<span className="gradient-text">Care</span>
-          </span>
+        <button onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="flex items-center gap-1">
+          <img src={nexcareLogo} alt="NexCare" className="h-8 sm:h-9 w-auto" />
         </button>
 
         {/* Desktop */}
@@ -49,12 +45,12 @@ const Navbar = () => {
             <button
               key={l.href}
               onClick={() => scrollTo(l.href)}
-              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+              className="text-[13px] font-medium text-muted-foreground hover:text-foreground transition-colors tracking-wide"
             >
               {l.label}
             </button>
           ))}
-          <Button size="sm" onClick={() => scrollTo("#contact")}>
+          <Button size="sm" onClick={() => scrollTo("#contact")} className="rounded-full px-6 shadow-sm">
             Get Started
           </Button>
         </div>
@@ -67,7 +63,7 @@ const Navbar = () => {
 
       {/* Mobile menu */}
       {mobileOpen && (
-        <div className="md:hidden bg-background/95 backdrop-blur-md border-b border-border px-4 pb-4 space-y-3">
+        <div className="md:hidden glass-nav border-b border-border/50 px-4 pb-4 space-y-3">
           {navLinks.map((l) => (
             <button
               key={l.href}
@@ -77,7 +73,7 @@ const Navbar = () => {
               {l.label}
             </button>
           ))}
-          <Button size="sm" className="w-full" onClick={() => scrollTo("#contact")}>
+          <Button size="sm" className="w-full rounded-full" onClick={() => scrollTo("#contact")}>
             Get Started
           </Button>
         </div>
