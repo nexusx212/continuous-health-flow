@@ -1,6 +1,15 @@
 import { Button } from "@/components/ui/button";
 import { Shield, Building2, Stethoscope, Activity, Heart, Thermometer, ArrowRight } from "lucide-react";
+import { motion } from "framer-motion";
 import nexcareIcon from "@/assets/nexcare-icon.png";
+
+const ease = [0.22, 1, 0.36, 1] as [number, number, number, number];
+
+const fadeUp = (delay: number) => ({
+  initial: { opacity: 0, y: 30 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.7, delay, ease },
+});
 
 const HeroSection = () => {
   const scrollTo = (id: string) => {
@@ -12,37 +21,53 @@ const HeroSection = () => {
       {/* Premium background layers */}
       <div className="absolute inset-0 gradient-hero" />
       <div className="absolute inset-0 bg-grid-pattern opacity-40" />
-      <div className="absolute top-0 right-0 w-[800px] h-[800px] rounded-full bg-primary/[0.03] blur-[120px]" />
-      <div className="absolute bottom-0 left-0 w-[600px] h-[600px] rounded-full bg-secondary/[0.03] blur-[100px]" />
+      <motion.div
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 1.5, ease: "easeOut" }}
+        className="absolute top-0 right-0 w-[800px] h-[800px] rounded-full bg-primary/[0.03] blur-[120px]"
+      />
+      <motion.div
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 1.5, delay: 0.3, ease: "easeOut" }}
+        className="absolute bottom-0 left-0 w-[600px] h-[600px] rounded-full bg-secondary/[0.03] blur-[100px]"
+      />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-16 lg:gap-20 items-center py-12 lg:py-0">
         {/* Copy */}
         <div className="space-y-10">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/[0.06] border border-primary/10 text-xs font-semibold text-primary tracking-wide uppercase">
+          <motion.div {...fadeUp(0.1)}
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/[0.06] border border-primary/10 text-xs font-semibold text-primary tracking-wide uppercase"
+          >
             <div className="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse" />
             Continuous Care Infrastructure
-          </div>
+          </motion.div>
 
-          <h1 className="text-4xl sm:text-5xl lg:text-[3.5rem] xl:text-6xl font-extrabold tracking-[-0.03em] text-foreground leading-[1.08]">
+          <motion.h1 {...fadeUp(0.25)}
+            className="text-4xl sm:text-5xl lg:text-[3.5rem] xl:text-6xl font-extrabold tracking-[-0.03em] text-foreground leading-[1.08]"
+          >
             Real-Time Monitoring.{" "}
             <span className="gradient-text">Real-Life Rescue.</span>
-          </h1>
+          </motion.h1>
 
-          <p className="text-lg sm:text-xl text-muted-foreground max-w-lg leading-relaxed font-light">
+          <motion.p {...fadeUp(0.4)}
+            className="text-lg sm:text-xl text-muted-foreground max-w-lg leading-relaxed font-light"
+          >
             Continuous healthcare powered by AI, doctors, and real-time patient data. We don't wait for emergencies — we prevent them.
-          </p>
+          </motion.p>
 
-          <div className="flex flex-wrap gap-4">
+          <motion.div {...fadeUp(0.55)} className="flex flex-wrap gap-4">
             <Button size="lg" onClick={() => scrollTo("#contact")} className="rounded-full px-8 text-base gap-2 shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/25 transition-all">
               Get Started <ArrowRight size={16} />
             </Button>
             <Button size="lg" variant="outline" onClick={() => scrollTo("#partners")} className="rounded-full px-8 text-base">
               Partner With Us
             </Button>
-          </div>
+          </motion.div>
 
           {/* Trust badges */}
-          <div className="flex flex-wrap gap-8 pt-2">
+          <motion.div {...fadeUp(0.7)} className="flex flex-wrap gap-8 pt-2">
             {[
               { icon: Shield, label: "HIPAA-Ready" },
               { icon: Building2, label: "HMO Integrated" },
@@ -55,11 +80,16 @@ const HeroSection = () => {
                 <span className="font-medium text-[13px]">{b.label}</span>
               </div>
             ))}
-          </div>
+          </motion.div>
         </div>
 
         {/* Dashboard mockup */}
-        <div className="relative hidden lg:block">
+        <motion.div
+          initial={{ opacity: 0, x: 60, scale: 0.95 }}
+          animate={{ opacity: 1, x: 0, scale: 1 }}
+          transition={{ duration: 0.9, delay: 0.5, ease }}
+          className="relative hidden lg:block"
+        >
           <div className="relative bg-card rounded-3xl shadow-premium-lg border border-border/50 p-7 space-y-5">
             {/* Header bar */}
             <div className="flex items-center justify-between">
@@ -117,24 +147,34 @@ const HeroSection = () => {
           </div>
 
           {/* Floating watch card */}
-          <div className="absolute -bottom-8 -left-8 bg-card rounded-2xl shadow-premium border border-border/50 p-5 w-44 animate-float">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 1.0, ease }}
+            className="absolute -bottom-8 -left-8 bg-card rounded-2xl shadow-premium border border-border/50 p-5 w-44 animate-float"
+          >
             <div className="flex items-center gap-2 mb-2">
               <Heart size={14} className="text-destructive animate-pulse-soft" />
               <span className="text-xs font-semibold text-foreground">Watch</span>
             </div>
             <div className="text-3xl font-bold text-foreground tracking-tight">72</div>
             <div className="text-xs text-muted-foreground">bpm • Normal</div>
-          </div>
+          </motion.div>
 
           {/* Floating alert card */}
-          <div className="absolute -top-4 -right-4 bg-card rounded-2xl shadow-premium border border-border/50 p-4 w-48 animate-float-delayed">
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 1.2, ease }}
+            className="absolute -top-4 -right-4 bg-card rounded-2xl shadow-premium border border-border/50 p-4 w-48 animate-float-delayed"
+          >
             <div className="flex items-center gap-2">
               <div className="w-2 h-2 rounded-full bg-secondary" />
               <span className="text-[11px] font-semibold text-foreground">AI Alert</span>
             </div>
             <p className="text-[11px] text-muted-foreground mt-1.5 leading-relaxed">Patient vitals stable. No intervention needed.</p>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );
