@@ -165,7 +165,7 @@ const HeroSection = () => {
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 1.2, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.7, delay: 1.2, ease }}
             className="absolute -top-4 -right-4 bg-card rounded-2xl shadow-premium border border-border/50 p-4 w-48 animate-float-delayed"
           >
             <div className="flex items-center gap-2">
