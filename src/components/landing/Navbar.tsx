@@ -66,6 +66,13 @@ const Navbar = () => {
               {l.label}
             </button>
           ))}
+          <button
+            onClick={toggleDark}
+            className="p-2 rounded-full hover:bg-accent transition-colors text-muted-foreground hover:text-foreground"
+            aria-label="Toggle dark mode"
+          >
+            {dark ? <Sun size={18} /> : <Moon size={18} />}
+          </button>
           <Button size="sm" onClick={() => scrollTo("#contact")} className="rounded-full px-6 shadow-sm">
             Get Started
           </Button>
