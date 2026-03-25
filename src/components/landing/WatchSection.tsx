@@ -43,7 +43,7 @@ const WatchSection = () => {
         {/* Content */}
         <div className="space-y-10">
           <div className="space-y-5">
-            <p className="text-xs font-semibold text-primary uppercase tracking-[0.2em]">Wearable Integration</p>
+            
             <h2 className="text-3xl sm:text-4xl lg:text-[2.75rem] font-extrabold text-foreground tracking-[-0.02em]">
               Your Health.{" "}
               <span className="gradient-text">Always Monitored.</span>

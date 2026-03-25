@@ -40,7 +40,7 @@ const HowItWorksSection = () => {
     <section id="how-it-works" className="py-24 lg:py-32">
       <div ref={ref} className="section-fade-in max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-14">
         <div className="text-center space-y-5 max-w-2xl mx-auto">
-          <p className="text-xs font-semibold text-primary uppercase tracking-[0.2em]">How It Works</p>
+          
           <h2 className="text-3xl sm:text-4xl lg:text-[2.75rem] font-extrabold text-foreground tracking-[-0.02em]">
             How <span className="gradient-text">NexCare</span> Works
           </h2>

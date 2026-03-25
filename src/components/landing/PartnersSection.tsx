@@ -15,7 +15,7 @@ const PartnersSection = () => {
       <div className="absolute inset-0 bg-muted/30" />
       <div ref={ref} className="section-fade-in relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
         <div className="text-center space-y-5 max-w-2xl mx-auto">
-          <p className="text-xs font-semibold text-primary uppercase tracking-[0.2em]">Ecosystem</p>
+          
           <h2 className="text-3xl sm:text-4xl lg:text-[2.75rem] font-extrabold text-foreground tracking-[-0.02em]">
             Built for Patients, Doctors, and{" "}
             <span className="gradient-text">Healthcare Systems</span>

@@ -26,7 +26,7 @@ const CTASection = () => {
 
       <div ref={ref} className="section-fade-in relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-12">
         <div className="space-y-5">
-          <p className="text-xs font-semibold text-primary uppercase tracking-[0.2em]">Get Started</p>
+          
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-foreground tracking-[-0.03em]">
             Join the Future of{" "}
             <span className="gradient-text">Healthcare</span>
