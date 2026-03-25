@@ -13,7 +13,7 @@ const SolutionSection = () => {
   const ref = useScrollAnimation();
 
   return (
-    <section className="py-24 lg:py-32">
+    <section id="about" className="py-24 lg:py-32">
       <div ref={ref} className="section-fade-in max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-16">
         <div className="space-y-5 max-w-2xl mx-auto">
           <p className="text-xs font-semibold text-primary uppercase tracking-[0.2em]">The Solution</p>
