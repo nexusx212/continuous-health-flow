@@ -17,7 +17,7 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center pt-20 overflow-hidden">
+    <section id="home" className="relative min-h-screen flex items-center pt-20 overflow-hidden">
       {/* Premium background layers */}
       <div className="absolute inset-0 gradient-hero" />
       <div className="absolute inset-0 bg-grid-pattern opacity-40" />
