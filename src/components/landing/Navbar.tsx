@@ -13,6 +13,22 @@ const navLinks = [
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [dark, setDark] = useState(() => document.documentElement.classList.contains("dark"));
+
+  const toggleDark = () => {
+    const next = !dark;
+    setDark(next);
+    document.documentElement.classList.toggle("dark", next);
+    localStorage.setItem("theme", next ? "dark" : "light");
+  };
+
+  useEffect(() => {
+    const saved = localStorage.getItem("theme");
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const shouldDark = saved === "dark" || (!saved && prefersDark);
+    setDark(shouldDark);
+    document.documentElement.classList.toggle("dark", shouldDark);
+  }, []);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
