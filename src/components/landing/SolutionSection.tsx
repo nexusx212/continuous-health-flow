@@ -13,10 +13,9 @@ const SolutionSection = () => {
   const ref = useScrollAnimation();
 
   return (
-    <section id="about" className="py-24 lg:py-32">
+    <section className="py-24 lg:py-32">
       <div ref={ref} className="section-fade-in max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-16">
         <div className="space-y-5 max-w-2xl mx-auto">
-          <p className="text-xs font-semibold text-primary uppercase tracking-[0.2em]">The Solution</p>
           <h2 className="text-3xl sm:text-4xl lg:text-[2.75rem] font-extrabold text-foreground tracking-[-0.02em]">
             One Platform.{" "}
             <span className="gradient-text">Total Continuous Care</span>
