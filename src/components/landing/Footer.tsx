@@ -6,7 +6,7 @@ const Footer = () => (
       <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
         {/* Brand */}
         <div className="space-y-4">
-          <img src={nexcareLogo} alt="NexCare" className="h-8 w-auto" />
+          <img src={nexcareLogo} alt="NexCare" className="h-12 w-auto" />
           <p className="text-sm text-muted-foreground leading-relaxed max-w-xs">
             Continuous care infrastructure connecting patients, doctors, pharmacies and insurers.
           </p>

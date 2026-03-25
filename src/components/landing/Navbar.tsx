@@ -52,7 +52,7 @@ const Navbar = () => {
     >
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16 md:h-20">
         <button onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="flex items-center gap-1">
-          <img src={nexcareLogo} alt="NexCare" className="h-8 sm:h-9 w-auto" />
+          <img src={nexcareLogo} alt="NexCare" className="h-10 sm:h-12 w-auto" />
         </button>
 
         {/* Desktop */}
