@@ -6,8 +6,11 @@ import nexcareLogo from "@/assets/nexcare-logo.png";
 const navLinks = [
   { label: "Home", href: "#home" },
   { label: "About", href: "#about" },
+  { label: "Services", href: "#services" },
   { label: "Features", href: "#features" },
   { label: "How It Works", href: "#how-it-works" },
+  { label: "Pricing", href: "#pricing" },
+  { label: "Team", href: "#team" },
   { label: "Partners", href: "#partners" },
   { label: "Contact", href: "#contact" },
 ];
