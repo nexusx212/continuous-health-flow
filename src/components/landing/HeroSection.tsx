@@ -1,7 +1,12 @@
+import { useState, useEffect, useCallback } from "react";
 import { Button } from "@/components/ui/button";
-import { Shield, Building2, Stethoscope, Activity, Heart, Thermometer, ArrowRight } from "lucide-react";
-import { motion } from "framer-motion";
-import nexcareIcon from "@/assets/nexcare-icon.png";
+import { Shield, Building2, Stethoscope, ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+
+import heroDoctor from "@/assets/hero-doctor.jpg";
+import heroPatient from "@/assets/hero-patient.jpg";
+import heroTelehealth from "@/assets/hero-telehealth.jpg";
+import heroTeam from "@/assets/hero-team.jpg";
 
 const ease = [0.22, 1, 0.36, 1] as [number, number, number, number];
 
@@ -11,14 +16,45 @@ const fadeUp = (delay: number) => ({
   transition: { duration: 0.7, delay, ease },
 });
 
+const slides = [
+  { src: heroDoctor, alt: "Professional doctor ready to help", caption: "Expert Doctors" },
+  { src: heroPatient, alt: "Patient with health monitoring smartwatch", caption: "Patient Monitoring" },
+  { src: heroTelehealth, alt: "Telehealth video consultation", caption: "Virtual Care" },
+  { src: heroTeam, alt: "NexCare medical team", caption: "Our Team" },
+];
+
 const HeroSection = () => {
+  const [current, setCurrent] = useState(0);
+  const [direction, setDirection] = useState(1);
+
+  const next = useCallback(() => {
+    setDirection(1);
+    setCurrent((c) => (c + 1) % slides.length);
+  }, []);
+
+  const prev = useCallback(() => {
+    setDirection(-1);
+    setCurrent((c) => (c - 1 + slides.length) % slides.length);
+  }, []);
+
+  useEffect(() => {
+    const timer = setInterval(next, 5000);
+    return () => clearInterval(timer);
+  }, [next]);
+
   const scrollTo = (id: string) => {
     document.querySelector(id)?.scrollIntoView({ behavior: "smooth" });
   };
 
+  const slideVariants = {
+    enter: (dir: number) => ({ x: dir > 0 ? 300 : -300, opacity: 0, scale: 0.95 }),
+    center: { x: 0, opacity: 1, scale: 1 },
+    exit: (dir: number) => ({ x: dir > 0 ? -300 : 300, opacity: 0, scale: 0.95 }),
+  };
+
   return (
     <section id="home" className="relative min-h-screen flex items-center pt-20 overflow-hidden">
-      {/* Premium background layers */}
+      {/* Background */}
       <div className="absolute inset-0 gradient-hero" />
       <div className="absolute inset-0 bg-grid-pattern opacity-40" />
       <motion.div
@@ -34,34 +70,46 @@ const HeroSection = () => {
         className="absolute bottom-0 left-0 w-[600px] h-[600px] rounded-full bg-secondary/[0.03] blur-[100px]"
       />
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-16 lg:gap-20 items-center py-12 lg:py-0">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center py-12 lg:py-0">
         {/* Copy */}
         <div className="space-y-10">
-          <motion.div {...fadeUp(0.1)}
+          <motion.div
+            {...fadeUp(0.1)}
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/[0.06] border border-primary/10 text-xs font-semibold text-primary tracking-wide uppercase"
           >
             <div className="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse" />
             Continuous Care Infrastructure
           </motion.div>
 
-          <motion.h1 {...fadeUp(0.25)}
+          <motion.h1
+            {...fadeUp(0.25)}
             className="text-4xl sm:text-5xl lg:text-[3.5rem] xl:text-6xl font-extrabold tracking-[-0.03em] text-foreground leading-[1.08]"
           >
             Real-Time Monitoring.{" "}
             <span className="gradient-text">Real-Life Rescue.</span>
           </motion.h1>
 
-          <motion.p {...fadeUp(0.4)}
+          <motion.p
+            {...fadeUp(0.4)}
             className="text-lg sm:text-xl text-muted-foreground max-w-lg leading-relaxed font-light"
           >
             Continuous healthcare powered by AI, doctors, and real-time patient data. We don't wait for emergencies — we prevent them.
           </motion.p>
 
           <motion.div {...fadeUp(0.55)} className="flex flex-wrap gap-4">
-            <Button size="lg" onClick={() => scrollTo("#contact")} className="rounded-full px-8 text-base gap-2 shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/25 transition-all">
+            <Button
+              size="lg"
+              onClick={() => scrollTo("#contact")}
+              className="rounded-full px-8 text-base gap-2 shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/25 transition-all"
+            >
               Get Started <ArrowRight size={16} />
             </Button>
-            <Button size="lg" variant="outline" onClick={() => scrollTo("#partners")} className="rounded-full px-8 text-base">
+            <Button
+              size="lg"
+              variant="outline"
+              onClick={() => scrollTo("#partners")}
+              className="rounded-full px-8 text-base"
+            >
               Partner With Us
             </Button>
           </motion.div>
@@ -83,96 +131,107 @@ const HeroSection = () => {
           </motion.div>
         </div>
 
-        {/* Dashboard mockup */}
+        {/* Image Carousel */}
         <motion.div
           initial={{ opacity: 0, x: 60, scale: 0.95 }}
           animate={{ opacity: 1, x: 0, scale: 1 }}
           transition={{ duration: 0.9, delay: 0.5, ease }}
           className="relative hidden lg:block"
         >
-          <div className="relative bg-card rounded-3xl shadow-premium-lg border border-border/50 p-7 space-y-5">
-            {/* Header bar */}
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-1.5">
-                <div className="w-3 h-3 rounded-full bg-destructive/50" />
-                <div className="w-3 h-3 rounded-full bg-yellow-400/50" />
-                <div className="w-3 h-3 rounded-full bg-secondary/50" />
-              </div>
-              <div className="flex items-center gap-2">
-                <img src={nexcareIcon} alt="" className="w-4 h-4" />
-                <span className="text-xs text-muted-foreground font-medium">NexCare Dashboard</span>
-              </div>
-            </div>
+          <div className="relative rounded-3xl overflow-hidden shadow-premium-lg border border-border/50 aspect-[4/3]">
+            <AnimatePresence custom={direction} mode="wait">
+              <motion.img
+                key={current}
+                src={slides[current].src}
+                alt={slides[current].alt}
+                width={960}
+                height={640}
+                custom={direction}
+                variants={slideVariants}
+                initial="enter"
+                animate="center"
+                exit="exit"
+                transition={{ duration: 0.5, ease }}
+                className="absolute inset-0 w-full h-full object-cover"
+              />
+            </AnimatePresence>
 
-            {/* Vitals grid */}
-            <div className="grid grid-cols-3 gap-3">
-              {[
-                { icon: Heart, label: "Heart Rate", value: "72 bpm", color: "text-destructive" },
-                { icon: Activity, label: "SpO₂", value: "98%", color: "text-primary" },
-                { icon: Thermometer, label: "Temp", value: "36.6°C", color: "text-secondary" },
-              ].map((v) => (
-                <div key={v.label} className="bg-muted/40 rounded-2xl p-4 text-center space-y-1.5">
-                  <v.icon size={18} className={`mx-auto ${v.color}`} />
-                  <div className="text-[11px] text-muted-foreground font-medium">{v.label}</div>
-                  <div className="text-lg font-bold text-foreground tracking-tight">{v.value}</div>
+            {/* Gradient overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 via-transparent to-transparent" />
+
+            {/* Caption */}
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={current}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.3 }}
+                className="absolute bottom-6 left-6 right-6 flex items-end justify-between"
+              >
+                <div>
+                  <span className="inline-block bg-primary/90 text-primary-foreground text-xs font-bold px-3 py-1.5 rounded-full backdrop-blur-sm">
+                    {slides[current].caption}
+                  </span>
                 </div>
-              ))}
-            </div>
+                <span className="text-primary-foreground/70 text-xs font-medium">
+                  {current + 1} / {slides.length}
+                </span>
+              </motion.div>
+            </AnimatePresence>
 
-            {/* Chart */}
-            <div className="bg-muted/20 rounded-2xl p-5 space-y-3">
-              <div className="flex items-center justify-between">
-                <div className="text-xs text-muted-foreground font-medium">Heart Rate — Last 24h</div>
-                <div className="text-[10px] text-primary font-semibold">Live</div>
-              </div>
-              <svg viewBox="0 0 300 60" className="w-full h-16">
-                <polyline fill="none" stroke="hsl(174 84% 32%)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"
-                  points="0,40 20,35 40,38 60,30 80,28 100,32 120,25 140,20 160,22 180,18 200,25 220,30 240,28 260,32 280,30 300,28" />
-                <polyline fill="url(#hero-grad)" stroke="none" opacity="0.1"
-                  points="0,60 0,40 20,35 40,38 60,30 80,28 100,32 120,25 140,20 160,22 180,18 200,25 220,30 240,28 260,32 280,30 300,28 300,60" />
-                <defs>
-                  <linearGradient id="hero-grad" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stopColor="hsl(174 84% 32%)" />
-                    <stop offset="100%" stopColor="hsl(174 84% 32%)" stopOpacity="0" />
-                  </linearGradient>
-                </defs>
-              </svg>
-            </div>
-
-            {/* Status */}
-            <div className="flex items-center gap-2 text-xs">
-              <div className="w-2 h-2 rounded-full bg-secondary animate-pulse" />
-              <span className="text-muted-foreground">All vitals normal — Last synced 2s ago</span>
-            </div>
+            {/* Nav arrows */}
+            <button
+              onClick={prev}
+              className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-card/80 backdrop-blur-sm border border-border/50 flex items-center justify-center text-foreground hover:bg-card transition-colors shadow-md"
+              aria-label="Previous slide"
+            >
+              <ChevronLeft size={20} />
+            </button>
+            <button
+              onClick={next}
+              className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-card/80 backdrop-blur-sm border border-border/50 flex items-center justify-center text-foreground hover:bg-card transition-colors shadow-md"
+              aria-label="Next slide"
+            >
+              <ChevronRight size={20} />
+            </button>
           </div>
 
-          {/* Floating watch card */}
+          {/* Dot indicators */}
+          <div className="flex items-center justify-center gap-2 mt-5">
+            {slides.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => {
+                  setDirection(i > current ? 1 : -1);
+                  setCurrent(i);
+                }}
+                className={`h-2 rounded-full transition-all duration-300 ${
+                  i === current
+                    ? "w-8 bg-primary"
+                    : "w-2 bg-muted-foreground/30 hover:bg-muted-foreground/50"
+                }`}
+                aria-label={`Go to slide ${i + 1}`}
+              />
+            ))}
+          </div>
+
+          {/* Floating badge */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 1.0, ease }}
-            className="absolute -bottom-8 -left-8 bg-card rounded-2xl shadow-premium border border-border/50 p-5 w-44 animate-float"
+            className="absolute -bottom-6 -left-6 bg-card rounded-2xl shadow-premium border border-border/50 p-4 animate-float"
           >
-            <div className="flex items-center gap-2 mb-2">
-              <Heart size={14} className="text-destructive animate-pulse-soft" />
-              <span className="text-xs font-semibold text-foreground">Watch</span>
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-full gradient-primary flex items-center justify-center shadow-md">
+                <Stethoscope size={18} className="text-primary-foreground" />
+              </div>
+              <div>
+                <div className="text-sm font-bold text-foreground">200+ Doctors</div>
+                <div className="text-xs text-muted-foreground">Ready to help</div>
+              </div>
             </div>
-            <div className="text-3xl font-bold text-foreground tracking-tight">72</div>
-            <div className="text-xs text-muted-foreground">bpm • Normal</div>
-          </motion.div>
-
-          {/* Floating alert card */}
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 1.2, ease }}
-            className="absolute -top-4 -right-4 bg-card rounded-2xl shadow-premium border border-border/50 p-4 w-48 animate-float-delayed"
-          >
-            <div className="flex items-center gap-2">
-              <div className="w-2 h-2 rounded-full bg-secondary" />
-              <span className="text-[11px] font-semibold text-foreground">AI Alert</span>
-            </div>
-            <p className="text-[11px] text-muted-foreground mt-1.5 leading-relaxed">Patient vitals stable. No intervention needed.</p>
           </motion.div>
         </motion.div>
       </div>
