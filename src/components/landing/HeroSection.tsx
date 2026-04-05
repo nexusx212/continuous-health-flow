@@ -234,6 +234,51 @@ const HeroSection = () => {
             </div>
           </motion.div>
         </motion.div>
+
+        {/* Mobile Carousel */}
+        <div className="lg:hidden relative mt-4">
+          <div className="relative rounded-2xl overflow-hidden shadow-premium border border-border/50 aspect-[4/3]">
+            <AnimatePresence custom={direction} mode="wait">
+              <motion.img
+                key={`mobile-${current}`}
+                src={slides[current].src}
+                alt={slides[current].alt}
+                custom={direction}
+                variants={slideVariants}
+                initial="enter"
+                animate="center"
+                exit="exit"
+                transition={{ duration: 0.5, ease }}
+                className="absolute inset-0 w-full h-full object-cover"
+              />
+            </AnimatePresence>
+            <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 via-transparent to-transparent" />
+            <div className="absolute bottom-4 left-4 right-4 flex items-end justify-between">
+              <span className="inline-block bg-primary/90 text-primary-foreground text-xs font-bold px-3 py-1.5 rounded-full backdrop-blur-sm">
+                {slides[current].caption}
+              </span>
+              <span className="text-primary-foreground/70 text-xs font-medium">
+                {current + 1} / {slides.length}
+              </span>
+            </div>
+            <button onClick={prev} className="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-card/80 backdrop-blur-sm border border-border/50 flex items-center justify-center text-foreground shadow-md" aria-label="Previous slide">
+              <ChevronLeft size={16} />
+            </button>
+            <button onClick={next} className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-card/80 backdrop-blur-sm border border-border/50 flex items-center justify-center text-foreground shadow-md" aria-label="Next slide">
+              <ChevronRight size={16} />
+            </button>
+          </div>
+          <div className="flex items-center justify-center gap-2 mt-4">
+            {slides.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => { setDirection(i > current ? 1 : -1); setCurrent(i); }}
+                className={`h-2 rounded-full transition-all duration-300 ${i === current ? "w-8 bg-primary" : "w-2 bg-muted-foreground/30 hover:bg-muted-foreground/50"}`}
+                aria-label={`Go to slide ${i + 1}`}
+              />
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );
