@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import { Button } from "@/components/ui/button";
-import { Shield, Building2, Stethoscope, ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
+import { Shield, Building2, Stethoscope, ArrowRight, ChevronLeft, ChevronRight, Activity, Brain } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 import heroDoctor from "@/assets/hero-doctor.jpg";
