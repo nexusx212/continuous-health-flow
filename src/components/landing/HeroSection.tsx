@@ -216,6 +216,40 @@ const HeroSection = () => {
             ))}
           </div>
 
+          {/* Floating badge */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 1.0, ease }}
+            className="absolute -bottom-6 -left-6 bg-card rounded-2xl shadow-premium border border-border/50 p-4 animate-float"
+          >
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-full bg-secondary/20 flex items-center justify-center shadow-md">
+                <Activity size={18} className="text-secondary" />
+              </div>
+              <div>
+                <div className="text-sm font-bold text-foreground">24/7 Monitoring</div>
+                <div className="text-xs text-muted-foreground">Always watching</div>
+              </div>
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 1.2, ease }}
+            className="absolute -top-4 -right-4 bg-card rounded-2xl shadow-premium border border-border/50 p-4 animate-float [animation-delay:1s]"
+          >
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-full gradient-primary flex items-center justify-center shadow-md">
+                <Brain size={18} className="text-primary-foreground" />
+              </div>
+              <div>
+                <div className="text-sm font-bold text-foreground">AI-Powered</div>
+                <div className="text-xs text-muted-foreground">Smart diagnostics</div>
+              </div>
+            </div>
+          </motion.div>
         </motion.div>
 
         {/* Mobile Carousel */}
