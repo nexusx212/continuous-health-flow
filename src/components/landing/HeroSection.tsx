@@ -297,34 +297,63 @@ const HeroSection = () => {
           </div>
         </div>
 
-        {/* Floating Social Icons */}
-        <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.7, delay: 1.4, ease }}
-          className="fixed left-4 top-1/2 -translate-y-1/2 z-40 hidden md:flex flex-col gap-3"
-        >
-          {[
-            { href: "https://facebook.com", label: "Facebook", path: "M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" },
-            { href: "https://twitter.com", label: "X / Twitter", path: "M4 4l7.07 9.34L4 20h1.6l5.84-5.5L16 20h4l-7.46-9.88L19.5 4H18l-5.44 5.12L8 4H4z" },
-            { href: "https://instagram.com", label: "Instagram", path: "M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9a5.5 5.5 0 0 1-5.5 5.5h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2zm4.5 5.5a4.5 4.5 0 1 0 0 9 4.5 4.5 0 0 0 0-9zm5.25-.75a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" },
-            { href: "https://linkedin.com", label: "LinkedIn", path: "M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2zM4 2a2 2 0 1 0 0 4 2 2 0 0 0 0-4z" },
-          ].map((s) => (
-            <a
-              key={s.label}
-              href={s.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={s.label}
-              className="w-10 h-10 rounded-full bg-card/80 backdrop-blur-sm border border-border/50 flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary/30 hover:shadow-md transition-all duration-200"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d={s.path} />
-              </svg>
-            </a>
-          ))}
-        </motion.div>
       </div>
+
+      {/* Floating Social Icons — right side, desktop vertical / mobile horizontal */}
+      <motion.div
+        initial={{ opacity: 0, x: 20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.7, delay: 1.4, ease }}
+        className="fixed right-3 top-1/2 -translate-y-1/2 z-40 hidden md:flex flex-col gap-2.5"
+      >
+        {[
+          { href: "https://facebook.com", label: "Facebook", path: "M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" },
+          { href: "https://twitter.com", label: "X / Twitter", path: "M4 4l7.07 9.34L4 20h1.6l5.84-5.5L16 20h4l-7.46-9.88L19.5 4H18l-5.44 5.12L8 4H4z" },
+          { href: "https://instagram.com", label: "Instagram", path: "M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9a5.5 5.5 0 0 1-5.5 5.5h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2zm4.5 5.5a4.5 4.5 0 1 0 0 9 4.5 4.5 0 0 0 0-9zm5.25-.75a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" },
+          { href: "https://linkedin.com", label: "LinkedIn", path: "M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2zM4 2a2 2 0 1 0 0 4 2 2 0 0 0 0-4z" },
+        ].map((s) => (
+          <a
+            key={s.label}
+            href={s.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={s.label}
+            className="w-9 h-9 rounded-full bg-card/70 backdrop-blur-sm border border-border/40 flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary/30 hover:shadow-md transition-all duration-200"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d={s.path} />
+            </svg>
+          </a>
+        ))}
+      </motion.div>
+
+      {/* Mobile social icons — horizontal bottom bar */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, delay: 1.4, ease }}
+        className="fixed bottom-4 left-1/2 -translate-x-1/2 z-40 flex md:hidden gap-3 bg-card/80 backdrop-blur-md border border-border/40 rounded-full px-4 py-2 shadow-lg"
+      >
+        {[
+          { href: "https://facebook.com", label: "Facebook", path: "M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" },
+          { href: "https://twitter.com", label: "X / Twitter", path: "M4 4l7.07 9.34L4 20h1.6l5.84-5.5L16 20h4l-7.46-9.88L19.5 4H18l-5.44 5.12L8 4H4z" },
+          { href: "https://instagram.com", label: "Instagram", path: "M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9a5.5 5.5 0 0 1-5.5 5.5h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2zm4.5 5.5a4.5 4.5 0 1 0 0 9 4.5 4.5 0 0 0 0-9zm5.25-.75a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" },
+          { href: "https://linkedin.com", label: "LinkedIn", path: "M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2zM4 2a2 2 0 1 0 0 4 2 2 0 0 0 0-4z" },
+        ].map((s) => (
+          <a
+            key={s.label}
+            href={s.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={s.label}
+            className="w-9 h-9 rounded-full flex items-center justify-center text-muted-foreground hover:text-primary transition-colors duration-200"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d={s.path} />
+            </svg>
+          </a>
+        ))}
+      </motion.div>
     </section>
   );
 };
