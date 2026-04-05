@@ -216,23 +216,6 @@ const HeroSection = () => {
             ))}
           </div>
 
-          {/* Floating badge */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 1.0, ease }}
-            className="absolute -bottom-6 -left-6 bg-card rounded-2xl shadow-premium border border-border/50 p-4 animate-float"
-          >
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full gradient-primary flex items-center justify-center shadow-md">
-                <Stethoscope size={18} className="text-primary-foreground" />
-              </div>
-              <div>
-                <div className="text-sm font-bold text-foreground">200+ Doctors</div>
-                <div className="text-xs text-muted-foreground">Ready to help</div>
-              </div>
-            </div>
-          </motion.div>
         </motion.div>
 
         {/* Mobile Carousel */}
