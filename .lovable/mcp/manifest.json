@@ -1,0 +1,81 @@
+{
+  "version": 1,
+  "sdk_version": "0.24.0",
+  "path": "/functions/v1/mcp",
+  "auth": {
+    "type": "none"
+  },
+  "mcp": {
+    "server": {
+      "name": "nexcare-mcp",
+      "version": "0.1.0",
+      "title": "NexCare"
+    },
+    "tools": [
+      {
+        "name": "get_overview",
+        "title": "Get NexCare overview",
+        "description": "Return a short overview of NexCare: name, tagline, description, and website.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {}
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "get_services",
+        "title": "Get NexCare services",
+        "description": "List NexCare's care services with their descriptions and key features.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {}
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "get_solution_flow",
+        "title": "Get NexCare care pipeline",
+        "description": "Return NexCare's 5-step continuous-care pipeline: Monitor, Detect, Consult, Treat, Rescue.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {}
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "get_partners",
+        "title": "Get NexCare partner offerings",
+        "description": "Return the value proposition for each NexCare partner type (doctors, insurers/HMOs, pharmacies).",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {}
+        },
+        "outputSchema": null
+      }
+    ]
+  }
+}
