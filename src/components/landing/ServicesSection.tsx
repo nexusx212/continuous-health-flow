@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Video, Apple, Microscope, HeartPulse, Stethoscope, Brain } from "lucide-react";
+import { Video, Apple, Microscope, HeartPulse, Stethoscope, Brain, Plane } from "lucide-react";
 
 const services = [
   {
@@ -13,6 +13,12 @@ const services = [
     title: "Nutrition Planning",
     desc: "Personalized meal plans and dietary guidance from certified nutritionists, tailored to your health goals and conditions.",
     features: ["Custom meal plans", "Allergy-aware", "Progress tracking"],
+  },
+  {
+    icon: Plane,
+    title: "Medical Travel",
+    desc: "End-to-end coordination for treatment abroad — from specialist matching and visa support to travel, lodging, and post-op follow-up.",
+    features: ["Vetted global hospitals", "Visa & logistics support", "Continuous remote follow-up"],
   },
   {
     icon: Microscope,
